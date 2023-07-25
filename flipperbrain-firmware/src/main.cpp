@@ -1,30 +1,11 @@
 #include <Arduino.h>
 #include <Bounce2.h>
+#include <Output.h>
 
 Bounce2::Button btn2;
-Bounce2::Button btn3;
 
-class Output
-{
-public:
-  Output::Output(int _pin)
-  {
-    pin = _pin;
-    pinMode(pin, OUTPUT);
-  }
-
-  void turnOn();
-
-private:
-  int pin;
-};
-
-void Output::turnOn()
-{
-  digitalWrite(pin,HIGH);
-}
-
-Output* led8;
+Output *led8;
+Output *led9;
 
 Bounce2::Button initButton(int pin)
 {
@@ -39,23 +20,25 @@ void setup()
 {
   Serial.begin(9600);
   btn2 = initButton(2);
-  btn3 = initButton(3);
 
-  led8 = &Output(8);
+  Output i = Output(8);
+  led8 = &i;
+  Output y = Output(9);
+  led9 = &y;
+
+  pinMode(3, INPUT_PULLUP);
 }
 
 void loop()
 {
+  led8->update();
+  led9->update();
   btn2.update();
-  btn3.update();
+
   if (btn2.pressed())
   {
-    Serial.println("Button 2 pressed!");
-    led8->turnOn();
+    led8->turnOnFor(500);
   }
 
-  if (btn3.pressed())
-  {
-    Serial.println("Button 3 pressed!");
-  }
+  led9->setState(!digitalRead(3));
 }
