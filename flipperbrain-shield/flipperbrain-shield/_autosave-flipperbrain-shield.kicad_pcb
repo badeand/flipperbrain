@@ -10038,15 +10038,15 @@
     (property "ki_keywords" "screw terminal")
     (path "/dbebbedb-bfeb-4a03-b638-5412e5d55eee")
     (attr through_hole)
-    (fp_text reference "J6" (at 8.75 -4.16 -90) (layer "F.SilkS") hide
+    (fp_text reference "J6" (at 8.75 -4.16 90) (layer "F.SilkS") hide
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 5ab7a303-31ac-480e-909b-f79ecb3df563)
     )
-    (fp_text value "Screw_Terminal_01x06" (at 8.75 5.56 -90) (layer "F.Fab")
+    (fp_text value "Screw_Terminal_01x06" (at 8.75 5.56 90) (layer "F.Fab")
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp c1c68259-fe51-4a2d-a9da-303725d4a129)
     )
-    (fp_text user "${REFERENCE}" (at 8.75 2.4 -90) (layer "F.Fab")
+    (fp_text user "${REFERENCE}" (at 8.75 2.4 90) (layer "F.Fab")
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 53e163b1-8f1c-4dc6-b597-c214104d8108)
     )
