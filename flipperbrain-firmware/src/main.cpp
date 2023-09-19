@@ -3,9 +3,12 @@
 #include <Output.h>
 
 Bounce2::Button btn2;
+Bounce2::Button btn3;
+Bounce2::Button btn4;
 
 Output *led8;
 Output *led9;
+Output *led10;
 
 Bounce2::Button initButton(int pin)
 {
@@ -20,25 +23,40 @@ void setup()
 {
   Serial.begin(9600);
   btn2 = initButton(2);
+  btn3 = initButton(3);
+  btn4 = initButton(4);
 
-  Output i = Output(8);
-  led8 = &i;
-  Output y = Output(9);
-  led9 = &y;
+  Output _led8 = Output(8);
+  led8 = &_led8;
+  Output _led9 = Output(9);
+  led9 = &_led9;
+  Output _led10 = Output(10);
+  led10 = &_led10;
 
-  pinMode(3, INPUT_PULLUP);
+  Serial.println("Setup DONE.");
 }
 
 void loop()
 {
   led8->update();
   led9->update();
+  led10->update();
   btn2.update();
+  btn3.update();
+  btn4.update();
 
   if (btn2.pressed())
   {
     led8->turnOnFor(500);
   }
 
-  led9->setState(!digitalRead(3));
+  if (btn3.pressed()){
+    led9->turnOnFor(500);
+  }
+
+  if (btn4.pressed()){
+    led10->turnOnFor(500);
+  }
+
+
 }
