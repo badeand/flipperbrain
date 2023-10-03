@@ -47,15 +47,15 @@ void loop()
 
   if (btn2.pressed())
   {
-    led8->turnOnFor(500);
+    led8->turnOnFor(50);
   }
 
   if (btn3.pressed()){
-    led9->turnOnFor(500);
+    led9->turnOnFor(50);
   }
 
   if (btn4.pressed()){
-    led10->turnOnFor(500);
+    led10->turnOnFor(50);
   }
 
 
