@@ -29,14 +29,27 @@ Bounce2::Button initButton(int _pin, int _pressedState)
 void increaseScore(int points)
 {
   score += points;
-  sprintf(sprintfbuffer, "Score: %05d (+%01d)", score, points);
+  sprintf(sprintfbuffer, "S%03dP%03d", score, points);
   Serial.println(sprintfbuffer);
 }
+
+void signalBumper(int _bumperNo)
+{
+  sprintf(sprintfbuffer, "B%03dP%03d", _bumperNo, _bumperNo);
+  Serial.println(sprintfbuffer);
+}
+
+void signalPlunger(int _plungerNo)
+{
+  sprintf(sprintfbuffer, "P%03dP%03d", _plungerNo, _plungerNo);
+  Serial.println(sprintfbuffer);
+}
+
 
 void setScore(int _score)
 {
   score = _score;
-  sprintf(sprintfbuffer, "Score: %05d (set to %05d)", score, score);
+  sprintf(sprintfbuffer, "S%03dS%03d", score, score);
   Serial.println(sprintfbuffer);
 }
 
@@ -83,6 +96,7 @@ void loop()
   if (btn2.pressed())
   {
     led8->turnOnFor(50);
+    signalPlunger(1);
   }
 
   if (btn3.pressed())
